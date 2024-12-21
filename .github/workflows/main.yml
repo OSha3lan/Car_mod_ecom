@@ -1,0 +1,30 @@
+name: Frontend CI
+
+on:
+  push:
+    branches:
+      - main  # or master, depending on your default branch
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Checkout code from the repository
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # Step 2: Set up Node.js (assuming you are using Node.js for testing)
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'  # specify your Node.js version
+
+    # Step 3: Install dependencies (for example, using npm)
+    - name: Install dependencies
+      run: npm install
+
+    # Step 4: Run frontend tests (for example, using Jest or other testing tools)
+    - name: Run tests
+      run: npm test
+
