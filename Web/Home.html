@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/norm.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/Home.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=IM+Fell+Great+Primer+SC&family=Madimi+One&display=swap"
+        rel="stylesheet">
+    <title>Home Page</title>
+</head>
+
+<body>
+    <!-- Start Header -->
+    <nav>
+        <div class="header">
+            <div class="container">
+                <div class="logo">
+                    <img src="image/Logo.png" alt="PHOTO" class="logo" width="130" height="200">
+                </div>
+
+
+                <ul class="main-nav">
+                    <li><a href="Home.html">Home</a></li>
+                    <li><a href="my_parts.html">Car Parts</a></li>
+                    <li><a href="appointment.html">Appointment</a></li>
+                </ul>
+                <div class=" btn-nav">
+                    <a href=" sign up.html"><button type="button" class="btn btn-signup">Sign Up</button></a>
+                    <a href="Login.html"><button type="button" class="btn btn-login">Log In</button></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- End Header -->
+
+    <!--START landing-->
+    <div class="landing" id="Home">
+        <div class="container">
+            <div class="text">
+                <h1>Welcome, To our Site</h1>
+                <p>Welcome to The ModiCar: Your ultimate destination for automotive innovation, where passion meets
+                    precision explore endless possibilities to transform your vehicle with expert modification mechanics
+                </p>
+            </div>
+            <div class="image">
+                <img src="image/CarImage2.jpg " alt="PHOTO" class="image-1">
+            </div>
+        </div>
+        <a href="#table" class="go-down"> <i class="fas fa-angle-double-down fa-2x"></i>
+        </a>
+    </div>
+    <!--end landing-->
+
+    <!--Start Table of parts-->
+    <div class="brows">
+        <div class="container">
+            <div class="filter">
+                <input type="text" placeholder="Search..">
+                <div class="selectbox">
+                    <select id="categoryFilter">
+
+
+                    </select>
+                </div>
+
+                <div class="selectbox">
+                    <select id="availabilityFilter">
+                        <option value="available">Available</option>
+                        <option value="unavailable">Unavailable</option>
+                    </select>
+                </div>
+            </div>
+            <table class="table" id="table">
+                <thead class="first_row">
+                    <tr>
+                        <th scope="col">Part Name</th>
+                        <th scope="col">Part categry</th>
+                        <th scope="col">ِPart Model</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+            </table>
+            <div>
+                <a href="add.html"><button type="button" class="btn btn-danger">Add Part</button></a>
+            </div>
+        </div>
+    </div>
+
+    <!--End Table of parts-->
+    <!-- footer  -->
+    <footer id="footer" class="footer ">
+        <div class="container">
+            <p class="cright">&copy; 2024 <span>ModiCar</span> All Right Reserved</p>
+            <div class="footer-inner  footer_C ">
+                <div class="footer-item logo_item">
+                    <h3 class="footer-head">about us</h3>
+                    <div class="logo">
+                        <img src="image/Logo.png" alt="PHOTO" class="logo" width="180">
+                    </div>
+                    <h1 class="text text-md">Explore, Modify, Drive</h1>
+
+
+                </div>
+                <div class="footer-item">
+                    <p>
+                        Explore, Modify, Drive: At the ModiCar Library, Drive your passion with ease! Our car
+                        modification management system streamlines the customization process, delivering tailored
+                        solutions to enhance your vehicle. Experience innovation, quality, and efficiency—every mile,
+                        every detail.
+                    </p>
+                    <p>
+                        Whether you're upgrading performance, refining style, or adding cutting-edge features, we've got
+                        you covered. Your dream car is just a step away with our seamless and reliable service.
+                    </p>
+                </div>
+                <div class="footer-item">
+                    <h3 class="footer-head">tags</h3>
+                    <ul class="tags-list flex">
+                        <li>Edit</li>
+                        <li>Modify</li>
+                        <li>Receive</li>
+                        <li>Drive</li>
+                    </ul>
+                </div>
+
+
+                <div class="footer-item">
+                    <h3 class="footer-head">Connect with us</h3>
+                    <p>Please feel free to contact us, either by mail or phone, we will respond within 24 hours.</p>
+                    <br>
+                    <p>Appointments available to answer the phone</p>
+                    <ul class="appointment-info">
+                        <li>24/7</li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>ModiCar@gmail.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+0XXX XXX XXX(XX)</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <ul class="footer-ul">
+                    <li><a href="#"> <i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="#" style="font-size: 1.7rem;"> <i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#" style="font-size: 1.5rem;"> <i class="fab fa-linkedin "></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <!-- end of footer  -->
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>

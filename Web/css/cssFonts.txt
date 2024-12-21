@@ -1,0 +1,18 @@
+//IM Fell Great Primer SC: CSS class:
+.im-fell great primer sc-regular {
+  font-family: "IM Fell Great Primer SC", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+//Madimi One: CSS class:
+.madimi-one-regular {
+  font-family: "Madimi One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+//Amiri Quran: CSS class
+.amiri-quran-regular {
+  font-family: "Amiri Quran", serif;
+  font-weight: 400;
+  font-style: normal;
+}
