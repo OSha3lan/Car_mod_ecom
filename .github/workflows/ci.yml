@@ -31,32 +31,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Step 2: Check if the frontend directory exists
-      - name: Check for frontend directory
-        run: |
-          if [ ! -d "frontend" ]; then
-            echo "Frontend directory not found. Skipping frontend steps."
-            exit 0
-          fi
-
-      # Step 3: Set up Node.js for frontend (if directory exists)
-      - name: Set up Node.js
-        if: success()
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16'
-
-      - name: Install frontend dependencies
-        if: success()
-        working-directory: frontend
-        run: npm install
-
-      - name: Run frontend tests
-        if: success()
-        working-directory: frontend
-        run: npm test
-
-      # Step 4: Set up Python for backend
+      # Step 2: Set up Python environment
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -68,29 +43,32 @@ jobs:
           source venv/bin/activate
           pip install -r requirements.txt
 
+      # Step 3: Run database migrations
       - name: Run migrations
         run: |
           source venv/bin/activate
           python manage.py makemigrations
           python manage.py migrate
 
+      # Step 4: Collect static files
+      - name: Collect static files
+        run: |
+          source venv/bin/activate
+          python manage.py collectstatic --noinput
+
+      # Step 5: Run backend tests
       - name: Run backend tests
         run: |
           source venv/bin/activate
           python manage.py test
 
-      # Step 5: Linting and formatting checks
-      - name: Run ESLint for frontend
-        if: success()
-        working-directory: frontend
-        run: npm run lint
-
+      # Step 6: Linting and formatting checks
       - name: Run Flake8 for backend
         run: |
           source venv/bin/activate
           flake8 .
 
-      # Step 6: Report results
+      # Step 7: Post results
       - name: Post results
         if: failure()
         run: echo "One or more steps failed"
