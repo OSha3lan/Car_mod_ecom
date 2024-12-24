@@ -1,0 +1,6 @@
+Django==5.1.4
+mysqlclient==2.1.1
+Pillow==9.4.0
+django-crispy-forms==1.14.0
+django-paypal==1.0.0
+flake8==6.1.0
