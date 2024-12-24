@@ -32,23 +32,17 @@ jobs:
         uses: actions/checkout@v3
 
       # Step 2: Set up Node.js for frontend
-      # Ensure the frontend directory exists before running these steps
-      - name: Check for frontend directory
-        run: test -d frontend
-
+      # Assuming the frontend directory exists
       - name: Set up Node.js
-        if: success()
         uses: actions/setup-node@v3
         with:
           node-version: '16'
 
       - name: Install frontend dependencies
-        if: success()
         working-directory: frontend
         run: npm install
 
       - name: Run frontend tests
-        if: success()
         working-directory: frontend
         run: npm test
 
@@ -77,7 +71,6 @@ jobs:
 
       # Step 4: Linting and formatting checks
       - name: Run ESLint for frontend
-        if: success()
         working-directory: frontend
         run: npm run lint
 
