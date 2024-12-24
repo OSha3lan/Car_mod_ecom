@@ -27,58 +27,66 @@ jobs:
           --health-retries=3
 
     steps:
-    # Step 1: Checkout the code
-    - name: Checkout code
-      uses: actions/checkout@v3
+      # Step 1: Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    # Step 2: Set up Node.js for frontend
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '16'
+      # Step 2: Set up Node.js for frontend
+      # Ensure the frontend directory exists before running these steps
+      - name: Check for frontend directory
+        run: test -d frontend
 
-    - name: Install frontend dependencies
-      working-directory: frontend
-      run: npm install
+      - name: Set up Node.js
+        if: success()
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
 
-    - name: Run frontend tests
-      working-directory: frontend
-      run: npm test
+      - name: Install frontend dependencies
+        if: success()
+        working-directory: frontend
+        run: npm install
 
-    # Step 3: Set up Python for backend
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.11'
+      - name: Run frontend tests
+        if: success()
+        working-directory: frontend
+        run: npm test
 
-    - name: Install Python dependencies
-      run: |
-        python -m venv venv
-        source venv/bin/activate
-        pip install -r requirements.txt
+      # Step 3: Set up Python for backend
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
 
-    - name: Run migrations
-      run: |
-        source venv/bin/activate
-        python manage.py makemigrations
-        python manage.py migrate
+      - name: Install Python dependencies
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          pip install -r requirements.txt
 
-    - name: Run backend tests
-      run: |
-        source venv/bin/activate
-        python manage.py test
+      - name: Run migrations
+        run: |
+          source venv/bin/activate
+          python manage.py makemigrations
+          python manage.py migrate
 
-    # Step 4: Linting and formatting checks
-    - name: Run ESLint for frontend
-      working-directory: frontend
-      run: npm run lint
+      - name: Run backend tests
+        run: |
+          source venv/bin/activate
+          python manage.py test
 
-    - name: Run Flake8 for backend
-      run: |
-        source venv/bin/activate
-        flake8 .
+      # Step 4: Linting and formatting checks
+      - name: Run ESLint for frontend
+        if: success()
+        working-directory: frontend
+        run: npm run lint
 
-    # Step 5: Report results
-    - name: Post results
-      if: failure()
-      run: echo "One or more steps failed"
+      - name: Run Flake8 for backend
+        run: |
+          source venv/bin/activate
+          flake8 .
+
+      # Step 5: Report results
+      - name: Post results
+        if: failure()
+        run: echo "One or more steps failed"
