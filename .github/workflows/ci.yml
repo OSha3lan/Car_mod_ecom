@@ -39,11 +39,11 @@ jobs:
           node-version: '16'
 
       - name: Install frontend dependencies
-        working-directory: frontend
+        working-directory: template
         run: npm install
 
       - name: Run frontend tests
-        working-directory: frontend
+        working-directory: template
         run: npm test
 
       # Step 3: Set up Python for backend
