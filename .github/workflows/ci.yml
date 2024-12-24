@@ -16,8 +16,8 @@ jobs:
       mysql:
         image: mysql:8.0
         env:
-          MYSQL_DATABASE: test_db
-          MYSQL_ROOT_PASSWORD: root_password
+          MYSQL_DATABASE: car_com
+          MYSQL_ROOT_PASSWORD: mazen2409
         ports:
           - 3306:3306
         options: >-
